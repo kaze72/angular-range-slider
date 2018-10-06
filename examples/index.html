@@ -3,8 +3,8 @@
 
 <head>
     <script src="../node_modules/angular/angular.js"></script>
-    <script src="../slider.js"></script>
-    <link href="../slider.css" rel="stylesheet">
+    <script src="../distribute/slider.js"></script>
+    <link href="../distribute/slider.css" rel="stylesheet">
     <style>
         body {
             width: 600px;
@@ -16,7 +16,7 @@
 <body>
     <div ng-app="ch.examples.slider">
         <h1>Slider test</h1>
-        <slider model="sliderValue" step="sliderStep" min="sliderMin" max="sliderMax">
+        <slider ng-init="sliderValue = 125" model="sliderValue" step="{{ sliderStep }}" min="{{ sliderMin }}" max="{{ sliderMax }}">
         </slider>
         <br>
         <label>Value
@@ -24,21 +24,24 @@
         </label>
         <br>
         <label>Min
-            <input ng-model="sliderMin">
+            <input ng-init="sliderMin = 50" ng-model="sliderMin">
         </label>
         <br>
         <label>Max
-            <input ng-model="sliderMax">
+            <input ng-init="sliderMax = 200" ng-model="sliderMax">
         </label>
         <br>
         <label>Step
-            <input ng-model="sliderStep">
+            <input ng-init="sliderStep = 2" ng-model="sliderStep">
         </label>
+
+        <hr />
+        <h2>Disabled slider</h2>
+        <slider ng-init="sliderValue = 125" model="sliderValue" step="{{ sliderStep }}" min="{{ sliderMin }}" max="{{ sliderMax }}" disabled>
+        </slider>
     </div>
     <script>
         angular.module('ch.examples.slider', ['chasselberg.slider']);
     </script>
-
 </body>
-
 </html>
